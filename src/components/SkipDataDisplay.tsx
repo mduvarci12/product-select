@@ -72,7 +72,7 @@ const SkipDataDisplay: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative pb-24">
+    <div className="relative pb-40 sm:pb-24">
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Choose Your Skip Size</h2>
         <p className="text-gray-400">Select the skip size that best suits your needs</p>
@@ -145,11 +145,11 @@ const SkipDataDisplay: React.FC = () => {
         </div>
       )}
       
-      <div className="fixed bottom-0 left-0 right-0 border-t border-gray-800 bg-gray-900 pt-4 pb-6 px-4 md:px-8 transition-all duration-300 ease-in-out z-50">
-        <div className="flex justify-between items-center max-w-7xl mx-auto">
+      <div className="fixed bottom-0 left-0 right-0 border-t border-gray-800 bg-gray-900 pt-3 pb-4 sm:pt-4 sm:pb-6 px-3 sm:px-4 md:px-8 transition-all duration-300 ease-in-out z-50">
+        <div className="flex flex-col xs:flex-row justify-between items-center max-w-7xl mx-auto gap-3 xs:gap-0">
           {selectedSkipId && selectedSkip && (
-            <div className={`text-white transition-all duration-300 ease-in-out transform ${bannerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <span className="text-blue-500 text-2xl font-bold">£{
+            <div className={`text-white transition-all duration-300 ease-in-out transform ${bannerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} text-center xs:text-left`}>
+              <span className="text-blue-500 text-xl xs:text-2xl font-bold">£{
                 formatPrice(calculateTotalPrice(
                   calculatePriceWithVAT(selectedSkip.price_before_vat, selectedSkip.vat),
                   selectedSkip.hire_period_days || DEFAULT_HIRE_PERIOD
@@ -163,26 +163,26 @@ const SkipDataDisplay: React.FC = () => {
               </div>
             </div>
           )}
-          {!selectedSkipId && <div></div>}
+          {!selectedSkipId && <div className="hidden xs:block"></div>}
           
-          <div className="flex space-x-4">
+          <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-4 w-full xs:w-auto">
             <button 
               onClick={handleBack}
-              className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-8 rounded-md transition duration-200"
+              className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 sm:px-6 md:px-8 rounded-md transition duration-200 text-sm sm:text-base w-full xs:w-auto"
             >
               Back
             </button>
             <button 
               onClick={handleContinue}
               disabled={!selectedSkipId || loading}
-              className={`py-2 px-8 rounded-md transition duration-200 flex items-center justify-center space-x-2 ${
+              className={`py-2 px-4 sm:px-6 md:px-8 rounded-md transition duration-200 flex items-center justify-center space-x-2 text-sm sm:text-base w-full xs:w-auto ${
                 loading ? 'bg-gray-700 text-gray-500 cursor-not-allowed' :
                 selectedSkipId ? 'bg-blue-600 hover:bg-blue-700 text-white' : 
                 'bg-gray-700 text-gray-500 cursor-not-allowed'}`}
             >
               <span>{loading ? 'Loading...' : 'Continue'}</span>
               {!loading && selectedSkipId && (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               )}
