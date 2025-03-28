@@ -16,6 +16,7 @@ This project is a React TypeScript application for waste management skip selecti
 - added a small animation to the banner to make it more engaging
 - removed outdated borders to reduce distraction
 - updated the button text
+- card height is smaller for less scrolling
 
 ### Code Structure Improvements
 
